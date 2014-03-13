@@ -104,6 +104,16 @@ void InputData::ocamlDefaultFileName( const char *inputFile )
 		outputFileName = fileNameFromStem( inputFile, ".ml" );
 }
 
+/* Invoked by the parser when the root element is opened. */
+void InputData::phpDefaultFileName( const char *inputFile )
+{
+       /* If the output format is code and no output file name is given, then
+        * make a default. */
+       if ( outputFileName == 0 )
+               outputFileName = fileNameFromStem( inputFile, ".php" );
+}
+
+
 void InputData::makeOutputStream()
 {
 	if ( ! generateDot && ! generateXML ) {
@@ -128,6 +138,9 @@ void InputData::makeOutputStream()
 			case HostLang::OCaml:
 				ocamlDefaultFileName( inputFileName );
 				break;
+            case HostLang::Php:
+                phpDefaultFileName( inputFileName );
+                break;
 		}
 	}
 

@@ -48,6 +48,7 @@
 #include "dotcodegen.h"
 
 #include "javacodegen.h"
+#include "phpcodegen.h"
 
 #include "gocodegen.h"
 #include "gotable.h"
@@ -202,6 +203,16 @@ CodeGenData *cdMakeCodeGen( const char *sourceFileName, const char *fsmName, ost
 CodeGenData *javaMakeCodeGen( const char *sourceFileName, const char *fsmName, ostream &out )
 {
 	CodeGenData *codeGen = new JavaTabCodeGen(out);
+
+	codeGen->sourceFileName = sourceFileName;
+	codeGen->fsmName = fsmName;
+
+	return codeGen;
+}
+
+CodeGenData *phpMakeCodeGen( const char *sourceFileName, const char *fsmName, ostream &out )
+{
+	CodeGenData *codeGen = new PhpTabCodeGen(out);
 
 	codeGen->sourceFileName = sourceFileName;
 	codeGen->fsmName = fsmName;
@@ -378,6 +389,8 @@ CodeGenData *makeCodeGen( const char *sourceFileName, const char *fsmName, ostre
 		cgd = csharpMakeCodeGen( sourceFileName, fsmName, out );
 	else if ( hostLang == &hostLangOCaml )
 		cgd = ocamlMakeCodeGen( sourceFileName, fsmName, out );
+    else if ( hostLang == &hostLangPhp )
+        cgd = phpMakeCodeGen( sourceFileName, fsmName, out );
 	return cgd;
 }
 

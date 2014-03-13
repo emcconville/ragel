@@ -125,6 +125,12 @@ HostType hostTypesOCaml[] =
 	{ "int",    0,  "int",      true,   true,  false, S31BIT_MIN, S31BIT_MAX, 4 },
 };
 
+HostType hostTypesPhp[] =
+{
+    {"char",    0, "char",      true,   true,  false, CHAR_MIN,   CHAR_MAX,    1 },
+    {"int",     0, "int",       true,   true,  false, INT_MIN,    INT_MAX,     1 }
+};
+
 HostLang hostLangC =      { HostLang::C,      hostTypesC,      8,  hostTypesC+0,       true };
 HostLang hostLangD =      { HostLang::D,      hostTypesD,      9,  hostTypesD+2,       true };
 HostLang hostLangD2 =     { HostLang::D2,     hostTypesD,      9,  hostTypesD+2,       true };
@@ -133,6 +139,7 @@ HostLang hostLangJava =   { HostLang::Java,   hostTypesJava,   4,  hostTypesJava
 HostLang hostLangRuby =   { HostLang::Ruby,   hostTypesRuby,   2,  hostTypesRuby+0,    false };
 HostLang hostLangCSharp = { HostLang::CSharp, hostTypesCSharp, 9,  hostTypesCSharp+4,  true };
 HostLang hostLangOCaml =  { HostLang::OCaml,  hostTypesOCaml,  1,  hostTypesOCaml+0,   false };
+HostLang hostLangPhp =    { HostLang::Php,    hostTypesPhp,    2,  hostTypesPhp+0,     false };
 
 HostLang *hostLang = &hostLangC;
 

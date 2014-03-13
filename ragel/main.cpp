@@ -126,6 +126,7 @@ void usage()
 "   -R                   The host language is Ruby\n"
 "   -A                   The host language is C#\n"
 "   -O                   The host language is OCaml\n"
+"   -W                   The host language is PHP\n"
 "line directives: (C/D/Ruby/C#)\n"
 "   -L                   Inhibit writing of #line directives\n"
 "code style: (C/D/Java/Ruby/C#)\n"
@@ -219,7 +220,7 @@ void escapeLineDirectivePath( std::ostream &out, char *path )
 
 void processArgs( int argc, const char **argv, InputData &id )
 {
-	ParamCheck pc("xo:dnmleabjkS:M:I:CDEJZRAOvHh?-:sT:F:G:P:LpV", argc, argv);
+	ParamCheck pc("xo:dnmleabjkS:M:I:CDEJZRAOWvHh?-:sT:F:G:P:LpV", argc, argv);
 
 	/* FIXME: Need to check code styles VS langauge. */
 
@@ -335,7 +336,10 @@ void processArgs( int argc, const char **argv, InputData &id )
 			case 'O':
 				hostLang = &hostLangOCaml;
 				break;
-
+            case 'W':
+                hostLang = &hostLangPhp;
+                break;
+            
 			/* Version and help. */
 			case 'v':
 				version();
