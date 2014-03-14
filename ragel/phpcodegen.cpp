@@ -1151,7 +1151,7 @@ void PhpTabCodeGen::writeExec()
 		if ( redFsm->anyEofActions() ) {
 			out <<
 				"	$__acts = " << EA() << "[" << vCS() << "]" << ";\n"
-				"	$__nacts = " << CAST("int") << " " << A() << "[__acts++];\n"
+				"	$__nacts = " << CAST("int") << " " << A() << "[$__acts++];\n"
 				"	while ( $__nacts-- > 0 ) {\n"
 				"		switch ( " << A() << "[$__acts++] ) {\n";
 				EOF_ACTION_SWITCH() <<
