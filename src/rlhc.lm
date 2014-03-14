@@ -283,6 +283,7 @@ include 'rlhc-c.lm'
 include 'rlhc-d.lm'
 include 'rlhc-cs.lm'
 include 'rlhc-go.lm'
+include 'rlhc-no-lang.lm'
 
 InputFile: str = argv.pop()
 OutputFile: str = argv.pop()
@@ -306,6 +307,8 @@ elsif ( Lang == 'csharp' )
 	cs_stmt_list( Start._repeat_stmt )
 elsif ( Lang == 'go' )
 	go_stmt_list( Start._repeat_stmt )
+elsif ( Lang == 'no-lang' )
+  nolang_stmt_list( Start._repeat_stmt )
 else {
 	print( 'rlhc: unrecognized language: ' Lang '\n' )
 }
